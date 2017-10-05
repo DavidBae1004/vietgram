@@ -9,10 +9,9 @@ urlpatterns = [
         name='index'
         ),
     url(
-        regex=r'^$',
+        regex=r'^login/$',
         view=user_views.login,
         name='login'
     ),
-    url(
-        url(r'^admin/') admin.site.url),
+    url(r'^admin/', admin.site.urls),
 ]
