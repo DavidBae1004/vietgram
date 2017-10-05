@@ -4,7 +4,7 @@ from users import views as user_views
 
 urlpatterns = [
     url(
-        regex=r'^$',
+        regex=r'^/$',
         view=user_views.index,
         name='index'
         ),
