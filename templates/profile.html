@@ -24,7 +24,8 @@
             <p class="profile__bio">
                 <span class="profile__full-name">
                         {{user.get_full_name}}
-                    </span> {{user.bio}}
+                    </span> {% if user.bio %}{{user.bio}}{% endif %} {% comment %} if sentence need to be
+                close with 'enndif' {% endcomment %}
                 <a href="{{user.website}}">{{user.website}}</a>
             </p>
         </div>

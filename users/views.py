@@ -39,7 +39,7 @@ def login(request):
 
 def explore(request):
     if request.user.is_authenticated:
-        users =  models.User.objects.all()
+        users =  models.User.objects.exclude(id=request.user.id)
         context = {
             'users': users
         }
@@ -51,10 +51,10 @@ def explore(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        potato = {
+        context = {
             'user': request.user
         }
-        return render(request, 'profile.html', potato)
+        return render(request, 'profile.html', context)
     else:
         response = HttpResponseRedirect(reverse('login'))
     return response
