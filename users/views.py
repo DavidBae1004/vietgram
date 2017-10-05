@@ -36,9 +36,14 @@ def login(request):
         response = HttpResponseRedirect(reverse('index'))
     return response
 
+
 def explore(request):
     if request.user.is_authenticated:
-        return render(request, 'explore.html')
+        users =  models.User.objects.all()
+        context = {
+            'users': users
+        }
+        return render(request, 'explore.html', context)
     else:
         response = HttpResponseRedirect(reverse('login'))
     return response

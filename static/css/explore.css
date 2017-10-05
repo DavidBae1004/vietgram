@@ -5,7 +5,7 @@
   min-height: 500px;
 }
 
-#explore .explore__users{
+#explore .explore__users {
   background-color: white;
   border: 1px solid #e6e6e6;
   border-radius: 3px;
@@ -13,7 +13,7 @@
   max-width: 600px;
 }
 
-.explore__users .explore__user{
+.explore__users .explore__user {
   padding: 10px 15px;
   display: flex;
   align-items: center;
@@ -21,35 +21,36 @@
   border: 1px solid #e6e6e6;
 }
 
-.explore__users .explore__user:last-child{
+.explore__users .explore__user:last-child {
   border: 0;
 }
 
-.explore__users .explore__avatar{
+.explore__users .explore__avatar {
   width: 55px;
+  height: 55px;
   border-radius: 50%;
 }
 
-.explore__user .explore__user-column{
+.explore__user .explore__user-column {
   display: flex;
   align-items: center;
 }
 
-.explore__user .explore__info{
+.explore__user .explore__info {
   margin-left: 15px;
 }
 
-.explore__info .explore__username{
+.explore__info .explore__username {
   display: block;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-.explore__info .explore__full-name{
-  color:#999;
+.explore__info .explore__full-name {
+  color: #999;
 }
 
-.explore__user-column button{
+.explore__user-column button {
   background-color: var(--fd-blue);
   color: white;
   border: 0;
@@ -61,10 +62,10 @@
 }
 
 .explore__user-column button:active,
-.explore__user-column button:focus{
+.explore__user-column button:focus {
   outline: none;
 }
 
-.explore__user-column:active{
-  opacity:0.9;
+.explore__user-column:active {
+  opacity: 0.9;
 }
