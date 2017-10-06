@@ -23,11 +23,11 @@ from images import models as image_models
 
 def index(request):
     if request.user.is_authenticated:
-        images = image_models.image.object.all() 
+        images = image_models.Image.objects.all() 
         context = {
             'images' : images
         }
-        return render(request, 'feed.html', images)
+        return render(request, 'feed.html', context)
     else:
         response = HttpResponseRedirect(reverse('login'))
     return response
