@@ -1,3 +1,43 @@
 from django.shortcuts import render
-
+from . import models
 # Create your views here.
+from django.http import HttpResponse
+
+def like_image(request, image_id):
+    try:
+        existing_like = models.Like.objects.get(
+            image__id=image_id, user__id=request.user.id)
+        # iamge__id /for searchig of 'image.id'
+        existing_like.delete() 
+        response = HttpResponse(status=202)
+
+    except models.Like.DoesNotExist:
+        found_image = models.Image.objects.get(id=image_id)
+        new_like = models.Like.objects.create(
+            user=request.user,
+            image=found_image
+        )
+        new_like.save()
+        response = HttpResponse(status=200)
+
+    return response
+
+
+
+# 0) Create a url like: '/images/{ID_OF_IMAGE}/like/
+# 1) Find a Like that exists with the image_id and the user_id
+# 2) If the like doesnt exist, create a like
+# 3) If the like is create return an HttpResponse with the status of 200
+# 4) If it already exists don't creatie the like and return  an HttpResponse with the status of 400
+
+
+def explore(request):
+    if request.user.is_authenticated:
+        users =  models.User.objects.exclude(id=request.user.id)
+        context = {
+            'users': users
+        }
+        return render(request, 'explore.html', context)
+    else:
+        response = HttpResponseRedirect(reverse('login'))
+    return response

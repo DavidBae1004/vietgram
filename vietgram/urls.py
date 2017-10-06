@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
+from images import views as image_views
 
 urlpatterns = [
     url(
@@ -22,8 +23,16 @@ urlpatterns = [
     ),
     url(r'^daveadmin/', admin.site.urls),
     url(
-        regex=r'(?P<username_from_url>.+)/$',
+        regex=r'^images/(?P<image_id>[\d+])/like/$',
+        # ?P<iamges_id>[\d+] / for the name of <iamges_id>, as the type number -->[\d+]  
+        view=image_views.like_image,
+        name='like_image'
+    ),
+    url(
+        regex=r'profile/(?P<username_from_url>.+)/$',
         view=user_views.profile,
         name='profile'
     ),
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

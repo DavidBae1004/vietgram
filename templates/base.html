@@ -13,6 +13,9 @@
 
 <body>
     {% include "partials/nav.html"%} {%block content%}{%endblock content%} {% include "partials/footer.html" %}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {% comment %} script:src {% endcomment %}
+    <script src="{%static 'js/app.js'%}"></script>
 </body>
 
 </html>

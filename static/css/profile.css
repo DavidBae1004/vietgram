@@ -99,6 +99,20 @@
   font-weight: 600;
 }
 
+.clickedHeart {
+  color: red;
+  animation: 0.2s pump linear infinite;
+}
+
+@keyframes pump {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
 .profile__bio a {
   color: var(--link-color);
   font-weight: 600;

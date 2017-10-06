@@ -3,7 +3,7 @@
   {% for image in images %}
   <div class="photo">
     <header class="photo__header">
-      <img src={{image.author.profile.url}} class="explore__avatar" />
+      <img src={{image.author.profile_photo.url}} class="explore__avatar" />
       <div class="photo__user-info">
         <span class="explore__author">{{image.author.username}}</span>
         <span class="photo__location">{{image.location}}</span>
@@ -13,7 +13,7 @@
     <div class="photo__info">
       <div class="photo__actions">
         <span class="photo_action">
-        <i class="fa fa-heart-o fa-lg"></i>
+        <i data-id="{{image.id}}" class="fa fa-heart-o fa-lg feedHeart"></i>
       </span>
         <span class="photo__action">
         <i class="fa fa-comment-o fa-lg"></i>
