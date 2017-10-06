@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from . import models
+from images import models as image_models
 
 # 1) Create the views
 # 2) Create the urls with the views
@@ -22,7 +23,11 @@ from . import models
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, 'feed.html')
+        images = image_models.image.object.all() 
+        context = {
+            'images' : images
+        }
+        return render(request, 'feed.html', images)
     else:
         response = HttpResponseRedirect(reverse('login'))
     return response
@@ -49,10 +54,11 @@ def explore(request):
     return response
 
 
-def profile(request):
+def profile(request, username_from_url):
     if request.user.is_authenticated:
+        profile_user = models.User.objects.get(username=username_from_url)
         context = {
-            'user': request.user
+            'profile_user': profile_user
         }
         return render(request, 'profile.html', context)
     else:
