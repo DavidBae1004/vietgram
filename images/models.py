@@ -12,9 +12,16 @@ class Image(models.Model):
 
     #related_name / I will use the foreign_key to find the set of data
  
+    @property
+    def is_liked(self, user):
+        return True
+
     def __str__(self):
         return self.location
- 
+
+    class Meta:
+        ordering = ["-date",]
+        #configuring for display / -date --> from recent to oldest 
  
 class Like(models.Model):
  

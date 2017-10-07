@@ -28,11 +28,24 @@ urlpatterns = [
         view=image_views.like_image,
         name='like_image'
     ),
+        url(
+        regex=r'^images/(?P<image_id>[\d+])/comment/$',
+        # ?P<iamges_id>[\d+] / for the name of <iamges_id>, as the type number -->[\d+]  
+        view=image_views.comment_image,
+        name='comment_image'
+    ),
     url(
         regex=r'profile/(?P<username_from_url>.+)/$',
         view=user_views.profile,
         name='profile'
     ),
+        url(
+        regex=r'images/(?P<iamag>.+)/$',
+        view=user_views.profile,
+        name='profile'
+    ),
+    
+    
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

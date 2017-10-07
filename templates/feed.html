@@ -13,7 +13,8 @@
     <div class="photo__info">
       <div class="photo__actions">
         <span class="photo_action">
-        <i data-id="{{image.id}}" class="fa fa-heart-o fa-lg feedHeart"></i>
+        <i data-id="{{image.id}}" class="fa fa-lg feedHeart fa-heart-o"></i> 
+        {% comment %}  class="fa fa-lg feedHeart / (call) fa (define the type) fa-lg  {% endcomment %}
       </span>
         <span class="photo__action">
         <i class="fa fa-comment-o fa-lg"></i>
@@ -32,7 +33,7 @@
       </ul>
       <span class="photo__time-ago">{{image.date|naturaltime}}</span>
       <div class="photo__add-comment-container">
-        <textarea name="comment" placeholder="Add a comment..."></textarea>
+        <textarea data-id="{{image.id}}" name="comment" class="comment-input" placeholder="Add a comment..."></textarea>
         <i class="fa fa-ellipsis-h"></i>
       </div>
     </div>
