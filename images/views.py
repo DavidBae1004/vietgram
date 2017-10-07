@@ -4,6 +4,8 @@ from . import models
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 # make free to POST regardless of Token request from Django
+from django.http import JsonResponse
+
 
 def like_image(request, image_id):
     try:
@@ -26,8 +28,8 @@ def like_image(request, image_id):
 
 @csrf_exempt
 def comment_image(request, image_id):
-
-comment_to_save = request.POST.get('comment', None)
+    
+    comment_to_save=request.POST.get('comment', None)
 
     if comment_to_save is not None:
 
@@ -41,7 +43,10 @@ comment_to_save = request.POST.get('comment', None)
 
         new_comment.save()
 
-        response = HttpResponse(status=201)
+        response = JsonResponse({
+            'comment': new_comment.comment,
+            'user': new_comment.user.username
+        })
 
     else:
         response = HttpResponse(status=406)
